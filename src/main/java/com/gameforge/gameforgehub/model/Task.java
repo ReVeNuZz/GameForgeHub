@@ -18,7 +18,6 @@ public class Task {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
     
- // Dentro de Task.java
 
     @ManyToOne
     @JoinColumn(name = "project_id") // Esta es la columna que se creará en la DB

@@ -18,7 +18,7 @@ public class Project {
     @JoinColumn(name = "user_id", nullable = true)
     private User user;
 
-    // Relación con tareas: Si borras el proyecto, se borran sus tareas (opcional)
+    // Relación con tareas: Si borras el proyecto, se borran sus tareas 
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
     private List<Task> tasks;
 

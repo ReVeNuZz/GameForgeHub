@@ -32,7 +32,7 @@ public class TaskService {
         return taskRepository.findById(id).orElse(null);
     }
     
- // Agrega estas líneas al final de tu TaskService
+ // Agrega estas líneas al final en TaskService
     public List<Task> getAllTasks() {
         return taskRepository.findAll();
     }

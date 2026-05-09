@@ -19,7 +19,7 @@ public class AuthService {
     }
 
     public void logout() {
-        // Por ahora este método no devuelve nada (void)
+        // Por ahora este método no devuelve nada
         System.out.println("Lógica de logout ejecutada");
     }
 }

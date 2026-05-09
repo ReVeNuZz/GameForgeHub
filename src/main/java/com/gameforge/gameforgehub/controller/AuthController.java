@@ -14,9 +14,8 @@ public class AuthController {
     private AuthService authService;
     
     @Autowired
-    private UserRepository userRepository; // esto es para poder registrar rápido
+    private UserRepository userRepository;
     
-    // GetMapping para probar en el navegador
     @GetMapping("/login") 
     public String login(@RequestParam String username, @RequestParam String password) {
         if (authService.login(username, password)) {
@@ -25,17 +24,20 @@ public class AuthController {
         return "Error: Usuario o contraseña incorrectos.";
     }
 
-    
+    //Role-based permissions 
     @GetMapping("/register")
-    public String register(@RequestParam String username, @RequestParam String password) {
+    public String register(@RequestParam String username, @RequestParam String password, @RequestParam(defaultValue = "USER") String role) {
         User newUser = new User();
-       newUser.setUsername(username);
+        newUser.setUsername(username);
         newUser.setPassword(password);
+        
+        // Si role llega nulo por alguna razón, le asignamos USER por defecto
+        String assignedRole = (role != null) ? role.toUpperCase() : "USER";
+        newUser.setRole(assignedRole); 
+        
         userRepository.save(newUser);
-        return "Usuario '" + username + "' creado con éxito. Ya puedes intentar el login.";
+        return "Usuario '" + username + "' creado con éxito como " + newUser.getRole();
     }
-    
-    
     
     @GetMapping("/logout")
     public String logout() {

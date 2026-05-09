@@ -12,11 +12,12 @@ public class User {
 
     private String username;
     private String password;
-
+    private String role;
+    
     // Constructor vacío (obligatorio para JPA)
     public User() {}
 
-    // --- GETTERS Y SETTERS (ESTO ES LO QUE TE FALTA) ---
+    
 
     public String getUsername() {
         return username;
@@ -33,8 +34,12 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+    
+    public String getRole() { return role; }
+    public void setRole(String role) { this.role = role; }
+    
 
-    // Opcional: Getter y Setter para el ID
+    //Getter y Setter para el ID
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 }
